@@ -1,11 +1,22 @@
-# MCMC_fnn_timeseries
-Bayesian MCMC Feedforward Neural Network for Time Series Prediction
+# Cooperative Coevolution Python Implementation
+This code uses a Feedforward Neural Network for Time Series Prediction.
 
-Requirements: Need data processing done, i. e. reconstruct a univariate time series into a state-space vector using Taken's theorem with a given Dimension and Timelag. 
+3 Mutation Operators are used;
+Simple Binary Crossover
+Blended Crossover
+G3PCX 
 
-Results: 
+Please see https://github.com/rohitash-chandra/real-coded-genetic-alg
 
- ![alt tag](https://github.com/rohitash-chandra/MCMC_fnn_timeseries/blob/master/mcmcresults/begin.png)
+Results below are for Simple Binary and Blended Crossover: 
+
+Cooperative Coevolution using Simple Binary Crossover to update populationss
+
+Laser Problem
+
+ ![alt tag](https://github.com/gary-wong-fiji/Cooperative-Coevolution-Python/blob/master/simple_binary_crossover%20Results/Sunspot/run0/dmcmc_train.svg)
+ 
+  ![alt tag](https://github.com/gary-wong-fiji/Cooperative-Coevolution-Python/blob/master/simple_binary_crossover%20Results/Sunspot/run0/dmcmc_test.svg)
  
 
  ![alt tag](https://github.com/rohitash-chandra/MCMC_fnn_timeseries/blob/master/mcmcresults/proposals.png) 
