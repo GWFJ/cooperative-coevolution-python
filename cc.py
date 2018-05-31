@@ -496,29 +496,53 @@ class CoEvolution:
 
         print indstring
 
+    # def ind_tonetworkready(self, ind):
+    #     layer1 = ind[0:(self.topology[0] * self.topology[1]) + self.topology[1]]
+    #     layer2 = ind[(self.topology[0] * self.topology[1]) + self.topology[1]:]
+    #     layer1 = np.reshape(layer1, (-1, self.topology[1]))
+    #     layer2 = np.reshape(layer2, (-1, self.topology[2]))
+    #
+    #     W1 = np.zeros(self.topology[0] * self.topology[1])
+    #     W2 = np.zeros(self.topology[1] * self.topology[2])
+    #     B1 = np.zeros(self.topology[1])
+    #     B2 = np.zeros(self.topology[2])
+    #
+    #     W1 = layer1[:, :-1]
+    #     W2 = layer2[:, :-1]
+    #     B1 = layer1[:, self.topology[1] - 1]
+    #     B2 = layer2[:, self.topology[2] - 1]
+    #
+    #     W1 = W1.ravel()
+    #     W2 = W2.ravel()
+    #     B1 = B1.ravel()
+    #     B2 = B2.ravel()
+    #
+    #     ind = np.concatenate([W1, W2, B1, B2])
+    #     return ind
+
     def ind_tonetworkready(self, ind):
         layer1 = ind[0:(self.topology[0] * self.topology[1]) + self.topology[1]]
         layer2 = ind[(self.topology[0] * self.topology[1]) + self.topology[1]:]
         layer1 = np.reshape(layer1, (-1, self.topology[1]))
-        layer2 = np.reshape(layer2, (-1, self.topology[2]))
+        # layer2 = np.reshape(layer2, (-1, self.topology[2]))
 
-        W1 = np.zeros(self.topology[0] * self.topology[1])
-        W2 = np.zeros(self.topology[1] * self.topology[2])
-        B1 = np.zeros(self.topology[1])
-        B2 = np.zeros(self.topology[2])
+        # W1 = np.zeros(self.topology[0] * self.topology[1])
+        # W2 = np.zeros(self.topology[1] * self.topology[2])
+        # B1 = np.zeros(self.topology[1])
+        # B2 = np.zeros(self.topology[2])
 
         W1 = layer1[:, :-1]
-        W2 = layer2[:, :-1]
+        W2 = layer2[:-1]
         B1 = layer1[:, self.topology[1] - 1]
-        B2 = layer2[:, self.topology[2] - 1]
+        B2 = layer2[len(layer2) - 1]
 
         W1 = W1.ravel()
         W2 = W2.ravel()
         B1 = B1.ravel()
         B2 = B2.ravel()
 
-        ind = np.concatenate([W1, W2, B1, B2])
-        return ind
+        individual = np.concatenate([W1, W2, B1, B2])
+        return individual
 
     def evaluate_newsolutions(self, speciesind, bestindividual, startindex, newpops):
         fitnesslist = np.zeros(newpops.shape[0])
@@ -607,28 +631,29 @@ class CoEvolution:
 
         speciesRange[1] = speciesRange[0] + (len(self.allspecies[speciesind].populations[0]) - 1)  # Set endpoint
 
-        layer1 = ind[0:(self.topology[0] *  self.topology[1]) + self.topology[1]]
-        layer2 = ind[(self.topology[0] * self.topology[1]) + self.topology[1]:]
-        layer1 = np.reshape(layer1, (-1, self.topology[1]))
-        layer2 = np.reshape(layer2, (-1, self.topology[2]))
+        # layer1 = ind[0:(self.topology[0] *  self.topology[1]) + self.topology[1]]
+        # layer2 = ind[(self.topology[0] * self.topology[1]) + self.topology[1]:]
+        # layer1 = np.reshape(layer1, (-1, self.topology[1]))
+        # layer2 = np.reshape(layer2, (-1, self.topology[2]))
+        #
+        # W1 = np.zeros(self.topology[0] *  self.topology[1])
+        # W2 = np.zeros(self.topology[1] * self.topology[2])
+        # B1 =  np.zeros(self.topology[1])
+        # B2 = np.zeros(self.topology[2])
+        #
+        # W1 = layer1[:,:-1]
+        # W2 = layer2[:,:-1]
+        # B1 = layer1[:,self.topology[1] - 1]
+        # B2 = layer2[:, self.topology[2] - 1]
+        #
+        # W1 = W1.ravel()
+        # W2 = W2.ravel()
+        # B1 = B1.ravel()
+        # B2 = B2.ravel()
+        #
+        # ind = np.concatenate([W1,W2, B1, B2])
 
-        W1 = np.zeros(self.topology[0] *  self.topology[1])
-        W2 = np.zeros(self.topology[1] * self.topology[2])
-        B1 =  np.zeros(self.topology[1])
-        B2 = np.zeros(self.topology[2])
-
-        W1 = layer1[:,:-1]
-        W2 = layer2[:,:-1]
-        B1 = layer1[:,self.topology[1] - 1]
-        B2 = layer2[:, self.topology[2] - 1]
-
-        W1 = W1.ravel()
-        W2 = W2.ravel()
-        B1 = B1.ravel()
-        B2 = B2.ravel()
-
-        ind = np.concatenate([W1,W2, B1, B2])
-        return ind
+        return self.ind_tonetworkready(ind)
 
 def main():
 
