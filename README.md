@@ -1,5 +1,7 @@
-# Cooperative Coevolution Python Implementation
+# Cooperative Coevolution RCGA Implementation
 This code uses a Feedforward Neural Network for Time Series Prediction.
+
+Please see https://github.com/rohitash-chandra/real-coded-genetic-alg for RCGA
 
 3 Mutation Operators are used;
 Simple Binary Crossover
@@ -21,7 +23,6 @@ Simple Binary Crossover
 Blended Crossover
 G3PCX 
 
-Please see https://github.com/rohitash-chandra/real-coded-genetic-alg
 
 Results below are for 1 run using 1000 evolution cycles:
 
